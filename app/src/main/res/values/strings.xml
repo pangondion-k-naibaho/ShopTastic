@@ -33,5 +33,10 @@
     <!--    Dialog-->
     <string name="dialogTxtLoginFailedTitle">Login Failed !</string>
     <string name="dialogTxtLoginFailedDesc">Please check your credentials and try again.</string>
+    <string name="dialogTxtRetrievingFailedTitle">No Data !</string>
+    <string name="dialogTxtRetrievingFailedDesc">Unable to retrieve data. Please try again later.</string>
+
+    <!--    Dropdown-->
+    <string name="dropdownCategories">--Select Categories--</string>
 
 </resources>

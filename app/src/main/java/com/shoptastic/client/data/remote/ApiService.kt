@@ -4,6 +4,7 @@ import com.shoptastic.client.data.model.request.login.LoginRequest
 import com.shoptastic.client.data.model.response.login.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -11,4 +12,7 @@ interface ApiService {
     suspend fun loginUser(
         @Body loginRequest: LoginRequest
     ): Response<LoginResponse>
+
+    @GET("products/categories")
+    suspend fun getCategories(): Response<List<String>>
 }
