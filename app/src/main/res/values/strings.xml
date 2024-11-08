@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ShopTastic</string>
+
+    <!--    Dummy-->
+    <string name="tvDummyTitle">Dummy Title</string>
+    <string name="tvDummyDesc">This is Dummy Description</string>
+    <string name="tvDummyQuestion">Is this a Dummy Question ?</string>
+    <string name="tvDummyDropdownOption">Dummy Option</string>
+
+
+    <!--    TextBox-->
+    <string name="tvInputTextError">This form is required</string>
+
+
+    <!--    Button-->
+    <string name="btnTxtLogin">Login</string>
+    <string name="btnTxtYes">Yes</string>
+    <string name="btnTxtNo">No</string>
+    <string name="btnTxtCancel">Cancel</string>
+
+
+    <!--    Login-->
+    <string name="tvWelcomeTitle">Welcome back!</string>
+    <string name="tvWelcomeDesc">Welcome to ShopTastic! Discover the finest products curated just for you.</string>
+    <string name="tvRegisterInvTitle">Don\'t have account ? Register</string>
+    <string name="tvRegisterInvDesc">here</string>
+    <string name="itvTxtUsername">Username</string>
+    <string name="itvTxtPassword">Username</string>
+
+    <!--    Toast-->
+    <string name="toastLoginSuccess">Login Success ! Directing to dashboard…</string>
+
+    <!--    Dialog-->
+    <string name="dialogTxtLoginFailedTitle">Login Failed !</string>
+    <string name="dialogTxtLoginFailedDesc">Please check your credentials and try again.</string>
+
+</resources>
