@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import com.shoptastic.client.R
 import com.shoptastic.client.data.model.other.ItemDropdown
+import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.databinding.ActivityDashboardBinding
 import com.shoptastic.client.ui.custom_components.InputDropdownView
 import com.shoptastic.client.ui.custom_components.PopUpNotificationListener
 import com.shoptastic.client.ui.custom_components.showPopUpNotification
+import com.shoptastic.client.ui.rv_adapters.ItemProductAdapter
 import com.shoptastic.client.ui.viewmodels.dashboard.DashboardViewModel
 import com.shoptastic.client.utils.Extension.Companion.retrieveListItemDropdownStatus
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,6 +26,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     
     private val dashboardViewModel: DashboardViewModel by viewModel()
+    private var rvAdapter: ItemProductAdapter?= null
 
     companion object{
         fun newIntent(context: Context):Intent = Intent(context, DashboardActivity::class.java)
@@ -62,6 +66,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun setUpView(){
         dashboardViewModel.getCategories()
+        dashboardViewModel.getProducts()
 
         dashboardViewModel.categoriesResponse.observe(this@DashboardActivity, {categories->
             val listOption = retrieveListItemDropdownStatus(categories)
@@ -80,9 +85,32 @@ class DashboardActivity : AppCompatActivity() {
                         setText(item)
                         val selectedCategories = item
                         Log.d(TAG, "Selected Categories: $selectedCategories")
+                        dashboardViewModel.getProductsByCategory(item)
                     }
                 })
             }
+        })
+
+        dashboardViewModel.productResponse.observe(this@DashboardActivity, {response->
+            binding.rvProducts.apply {
+                rvAdapter = ItemProductAdapter(
+                    response.toMutableList(),
+                    object: ItemProductAdapter.ItemListener{
+                        override fun onClick(item: ProductResponse) {
+                            Log.d(TAG, "product: $item")
+                        }
+                    }
+                )
+
+                val rvLayoutManager = GridLayoutManager(this@DashboardActivity, 2)
+
+                adapter = rvAdapter
+                layoutManager = rvLayoutManager
+            }
+        })
+
+        dashboardViewModel.productsByCategoriesResponse.observe(this@DashboardActivity, {response->
+            rvAdapter!!.updateItem(response)
         })
     }
 

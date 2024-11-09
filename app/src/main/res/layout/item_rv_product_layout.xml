@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="5dp"
+    android:background="@drawable/bg_circular_rectangle_white">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvProductName"
+        android:src="@drawable/sample_product"
+        app:shapeAppearanceOverlay="@style/RoundedTopImage"/>
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivProduct"
+        app:layout_constraintBottom_toTopOf="@id/tvProductPrice"
+        android:layout_marginTop="5dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="@font/redhatdisplay_medium"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="@string/tvDummyProductName"/>
+
+    <TextView
+        android:id="@+id/tvProductPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+        app:layout_constraintBottom_toTopOf="@+id/tvProductRating"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/redhatdisplay_bold"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="@string/tvDummyProductPrice"/>
+
+    <TextView
+        android:id="@+id/tvProductRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvProductPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/ic_star_rate"
+        android:fontFamily="@font/redhatdisplay_light"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="@string/tvDummyProductRating"/>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@+id/tvProductRating"
+        app:layout_constraintEnd_toStartOf="@+id/tvProductCategory"
+        app:layout_constraintTop_toTopOf="@+id/tvProductRating"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductRating"
+        android:layout_marginVertical="3dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvProductCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProductRating"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProductRating"
+        app:layout_constraintStart_toEndOf="@+id/view1"
+        android:textSize="12sp"
+        android:textColor="@color/dwarven_peaches"
+        android:text="@string/tvDummyProductCategory"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

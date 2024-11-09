@@ -23,5 +23,9 @@ class Extension {
             return arrListItemDropdown
         }
 
+        fun Double.toCurrencyString(): String {
+            return "$ %.2f".format(this)
+        }
+
     }
 }

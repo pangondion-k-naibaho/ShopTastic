@@ -6,6 +6,10 @@
     <string name="tvDummyDesc">This is Dummy Description</string>
     <string name="tvDummyQuestion">Is this a Dummy Question ?</string>
     <string name="tvDummyDropdownOption">Dummy Option</string>
+    <string name="tvDummyProductName">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</string>
+    <string name="tvDummyProductPrice">$ 15.99</string>
+    <string name="tvDummyProductRating">5.5</string>
+    <string name="tvDummyProductCategory">women\'s clothing</string>
 
 
     <!--    TextBox-->
@@ -38,5 +42,6 @@
 
     <!--    Dropdown-->
     <string name="dropdownCategories">--Select Categories--</string>
+    <string name="tvListProductsTitle">List of Products</string>
 
 </resources>

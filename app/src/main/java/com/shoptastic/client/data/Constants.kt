@@ -15,4 +15,13 @@ class Constants {
         }
     }
 
+    interface PRODUCT_CATEGORY{
+        companion object{
+            const val ELECTRONICS = "electronics"
+            const val JEWELRY = "jewelery"
+            const val MENS_CLOTHING = "men's clothing"
+            const val WOMENS_CLOTHING = "women's clothing"
+        }
+    }
+
 }
