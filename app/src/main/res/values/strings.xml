@@ -10,6 +10,10 @@
     <string name="tvDummyProductPrice">$ 15.99</string>
     <string name="tvDummyProductRating">5.5</string>
     <string name="tvDummyProductCategory">women\'s clothing</string>
+    <string name="tvDummyUsername">kevinryan</string>
+    <string name="tvDummyPhoneNum">1–765–789–6734</string>
+    <string name="tvDummyEmail">example@mail.com</string>
+    <string name="tvDummyAddress">San Antonio, Hunters Creek Dr</string>
 
 
     <!--    TextBox-->
@@ -21,6 +25,7 @@
     <string name="btnTxtYes">Yes</string>
     <string name="btnTxtNo">No</string>
     <string name="btnTxtCancel">Cancel</string>
+    <string name="btnTxtLogout">Logout</string>
 
 
     <!--    Login-->
@@ -29,7 +34,7 @@
     <string name="tvRegisterInvTitle">Don\'t have account ? Register</string>
     <string name="tvRegisterInvDesc">here</string>
     <string name="itvTxtUsername">Username</string>
-    <string name="itvTxtPassword">Username</string>
+    <string name="itvTxtPassword">Password</string>
 
     <!--    Toast-->
     <string name="toastLoginSuccess">Login Success ! Directing to dashboard…</string>
@@ -39,9 +44,20 @@
     <string name="dialogTxtLoginFailedDesc">Please check your credentials and try again.</string>
     <string name="dialogTxtRetrievingFailedTitle">No Data !</string>
     <string name="dialogTxtRetrievingFailedDesc">Unable to retrieve data. Please try again later.</string>
+    <string name="dialogTxtLogoutTitle">Logout</string>
+    <string name="dialogTxtLogoutDesc">Are you sure want to log out ?</string>
+    <string name="dialogTxtSuccessLogoutTitle">Log out Success</string>
+    <string name="dialogTxtSuccessLogoutDesc">You have successfully logged out. See you again soon!</string>
 
     <!--    Dropdown-->
     <string name="dropdownCategories">--Select Categories--</string>
     <string name="tvListProductsTitle">List of Products</string>
+
+    <!--    BottomSheet-->
+    <string name="bsTxtProfileTitle">Profile</string>
+    <string name="bsTxtUsernameTitle">Username</string>
+    <string name="bsTxtEmailTitle">Email</string>
+    <string name="bsTxtAddresssTitle">Address</string>
+    <string name="bsTxtPhoneNumTitle">Phone</string>
 
 </resources>

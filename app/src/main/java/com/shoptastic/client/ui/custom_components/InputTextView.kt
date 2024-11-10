@@ -166,12 +166,12 @@ class InputTextView: ConstraintLayout {
             }
         }
 
-        binding.tvTitle.apply {
-            visibility = when(retrievedInputType){
-                INPUT_TYPE.EMAIL, INPUT_TYPE.PASSWORD -> View.GONE
-                else -> View.VISIBLE
-            }
-        }
+//        binding.tvTitle.apply {
+//            visibility = when(retrievedInputType){
+//                INPUT_TYPE.EMAIL, INPUT_TYPE.PASSWORD -> View.GONE
+//                else -> View.VISIBLE
+//            }
+//        }
     }
 
     //Fungsi untuk reveal password (ketika icon reveal di click)

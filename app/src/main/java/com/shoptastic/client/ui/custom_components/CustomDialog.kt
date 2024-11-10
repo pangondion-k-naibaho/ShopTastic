@@ -34,7 +34,7 @@ fun Activity.showPopUpNotification(
     val binding = PopupNotificationLayoutBinding.bind(layoutInflater.inflate(R.layout.popup_notification_layout, null))
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.window?.setLayout(
-        ViewGroup.LayoutParams.WRAP_CONTENT,
+        ViewGroup.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
     dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -46,7 +46,7 @@ fun Activity.showPopUpNotification(
         Glide.with(this@showPopUpNotification)
             .load(backgroundImage)
             .into(ivPopUp)
-        //bagaimana cara saya membuat dialog.dismiss dengan trigger waktu? karena pop up ini tanpa button
+
         Handler(Looper.getMainLooper()).postDelayed({
             if (dialog.isShowing) {
                 dialog.dismiss()

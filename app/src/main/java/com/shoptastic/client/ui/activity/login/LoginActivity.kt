@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.shoptastic.client.R
 import com.shoptastic.client.data.Constants.PREFERENCES.Companion.APP_PREFERENCES
 import com.shoptastic.client.data.Constants.PREFERENCES.Companion.TOKEN_KEY
+import com.shoptastic.client.data.Constants.PREFERENCES.Companion.USERNAME_KEY
 import com.shoptastic.client.databinding.ActivityLoginBinding
 import com.shoptastic.client.ui.activity.dashboard.DashboardActivity
 import com.shoptastic.client.ui.custom_components.InputTextView
@@ -25,6 +26,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginActivity : AppCompatActivity() {
     private val TAG = LoginActivity::class.java.simpleName
     private lateinit var binding: ActivityLoginBinding
+
+    private var retrievedUsername: String?= null
+    private var retrievedPassword: String?= null
 
     private val loginViewModel: LoginViewModel by viewModel()
 
@@ -71,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
 
             lifecycleScope.launch(Dispatchers.IO){
                 editor.putString(TOKEN_KEY, response.token)
+                editor.putString(USERNAME_KEY, retrievedUsername)
                 editor.apply()
 
                 withContext(Dispatchers.Main){
@@ -105,11 +110,11 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.apply {
                 setOnClickListener {
                     if(isFormComplete()){
-                        val retrievedUsername = binding.itvUsername.getText()
-                        val retrievedPassword = binding.itvPassword.getText()
+                        retrievedUsername = binding.itvUsername.getText()
+                        retrievedPassword = binding.itvPassword.getText()
 
                         Log.d(TAG, "username: $retrievedUsername, password: $retrievedPassword")
-                        loginViewModel.loginUser(retrievedUsername, retrievedPassword)
+                        loginViewModel.loginUser(retrievedUsername!!, retrievedPassword!!)
                     }
                 }
             }
