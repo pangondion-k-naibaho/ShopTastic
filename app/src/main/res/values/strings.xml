@@ -30,6 +30,7 @@
     <string name="btnTxtLogout">Logout</string>
     <string name="btnTxtAddToCart">Add to Cart</string>
     <string name="btnTxtCheckout">Checkout</string>
+    <string name="btnTxtPurchase">Purchase</string>
 
 
     <!--    Login-->

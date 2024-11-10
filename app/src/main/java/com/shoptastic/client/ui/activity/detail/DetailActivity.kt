@@ -120,6 +120,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        finish()
         return true
     }
 
