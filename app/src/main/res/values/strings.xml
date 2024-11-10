@@ -9,11 +9,13 @@
     <string name="tvDummyProductName">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</string>
     <string name="tvDummyProductPrice">$ 15.99</string>
     <string name="tvDummyProductRating">5.5</string>
+    <string name="tvDummyProductCountRater">(317)</string>
     <string name="tvDummyProductCategory">women\'s clothing</string>
     <string name="tvDummyUsername">kevinryan</string>
     <string name="tvDummyPhoneNum">1–765–789–6734</string>
     <string name="tvDummyEmail">example@mail.com</string>
     <string name="tvDummyAddress">San Antonio, Hunters Creek Dr</string>
+    <string name="tvDummyProductDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec faucibus arcu, a fringilla justo.</string>
 
 
     <!--    TextBox-->
@@ -26,6 +28,8 @@
     <string name="btnTxtNo">No</string>
     <string name="btnTxtCancel">Cancel</string>
     <string name="btnTxtLogout">Logout</string>
+    <string name="btnTxtAddToCart">Add to Cart</string>
+    <string name="btnTxtCheckout">Checkout</string>
 
 
     <!--    Login-->
@@ -59,5 +63,15 @@
     <string name="bsTxtEmailTitle">Email</string>
     <string name="bsTxtAddresssTitle">Address</string>
     <string name="bsTxtPhoneNumTitle">Phone</string>
+
+    <!--    Detail-->
+    <string name="tvDetailProductTitle">Detail Product</string>
+
+
+    <!--    Format-->
+    <string name="tvFormatCountRater">(%d)</string>
+
+    <!--    Menu-->
+    <string name="menuCart">Cart</string>
 
 </resources>

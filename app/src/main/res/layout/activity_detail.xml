@@ -11,13 +11,23 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.detail.DetailActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailActionbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/svContent"
+            android:background="@color/flax_flower_blue"/>
+
         <ScrollView
             android:id="@+id/svContent"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailActionbar"
             app:layout_constraintBottom_toTopOf="@+id/clAction">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +41,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvProductPrice"
+                    app:layout_constraintBottom_toTopOf="@+id/tvProductPrice"
                     android:src="@drawable/sample_product"/>
 
 
@@ -166,7 +176,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clAction"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/svContent"

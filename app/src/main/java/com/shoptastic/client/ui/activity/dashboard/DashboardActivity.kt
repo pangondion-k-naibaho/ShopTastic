@@ -20,6 +20,7 @@ import com.shoptastic.client.data.model.other.ItemDropdown
 import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.databinding.ActivityDashboardBinding
 import com.shoptastic.client.databinding.DashboardBottomsheetLayoutBinding
+import com.shoptastic.client.ui.activity.detail.DetailActivity
 import com.shoptastic.client.ui.activity.login.LoginActivity
 import com.shoptastic.client.ui.custom_components.InputDropdownView
 import com.shoptastic.client.ui.custom_components.PopUpNotificationListener
@@ -115,6 +116,7 @@ class DashboardActivity : AppCompatActivity() {
                     object: ItemProductAdapter.ItemListener{
                         override fun onClick(item: ProductResponse) {
                             Log.d(TAG, "product: $item")
+                            startActivity(DetailActivity.newIntent(this@DashboardActivity, item.id))
                         }
                     }
                 )
