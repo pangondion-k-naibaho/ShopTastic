@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.shoptastic.client.data.model.response.products.ProductResponse
+import com.shoptastic.client.data.model.response.products.RatingProductResponse
 
 
 class Converters {
@@ -12,14 +13,14 @@ class Converters {
 
     // Mengonversi ProductResponse ke String (JSON)
     @TypeConverter
-    fun fromProductResponse(productResponse: ProductResponse): String {
-        return gson.toJson(productResponse)
+    fun fromRatingProductResponse(ratingProductResponse: RatingProductResponse): String {
+        return gson.toJson(ratingProductResponse)
     }
 
     // Mengonversi String (JSON) kembali ke ProductResponse
     @TypeConverter
-    fun toProductResponse(data: String): ProductResponse {
-        val type = object : TypeToken<ProductResponse>() {}.type
+    fun toRatingProductResponse(data: String): RatingProductResponse {
+        val type = object : TypeToken<RatingProductResponse>() {}.type
         return gson.fromJson(data, type)
     }
 }

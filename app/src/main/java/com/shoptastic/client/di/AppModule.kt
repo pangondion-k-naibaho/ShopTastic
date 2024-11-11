@@ -13,6 +13,8 @@ import com.shoptastic.client.data.repository.products.ProductsRepository
 import com.shoptastic.client.data.repository.products.ProductsRepositoryImpl
 import com.shoptastic.client.data.repository.products_saved.ProductSavedRepository
 import com.shoptastic.client.data.repository.products_saved.ProductSavedRepositoryImpl
+import com.shoptastic.client.data.repository.products_saved.SavedProductRepository
+import com.shoptastic.client.data.repository.products_saved.SavedProductRepositoryImpl
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepository
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepositoryImpl
 import com.shoptastic.client.ui.viewmodels.dashboard.DashboardViewModel
@@ -31,7 +33,8 @@ val repositoryModule = module {
     single<ProductsRepository> { ProductsRepositoryImpl(get()) }
     single<ProductsByCategoriesRepository> { ProductsByCategoriesRepositoryImpl(get()) }
     single<DetailProductRepository> { DetailProductRepositoryImpl(get()) }
-    single<ProductSavedRepository> { ProductSavedRepositoryImpl(get()) }
+//    single<ProductSavedRepository> { ProductSavedRepositoryImpl(get()) }
+    single<SavedProductRepository> { SavedProductRepositoryImpl(get()) }
 }
 
 val viewModelModule = module {
@@ -51,5 +54,7 @@ val databaseModule = module {
     }
 
     // Menyediakan DAO dari database
-    single { get<AppDatabase>().productSavedDao() }
+//    single { get<AppDatabase>().productSavedDao() }
+
+    single { get<AppDatabase>().savedProductDao() }
 }

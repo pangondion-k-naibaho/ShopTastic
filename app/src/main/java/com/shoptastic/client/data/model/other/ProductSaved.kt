@@ -11,5 +11,4 @@ import kotlinx.android.parcel.Parcelize
 data class ProductSaved(
     @PrimaryKey val dataId: String,
     val productResponse: ProductResponse,
-    val isChecklisted: Boolean = false,
 ):Parcelable

@@ -127,9 +127,7 @@ class DetailActivity : AppCompatActivity() {
                 Log.d(TAG, "retrieved product: ${retrievedProduct}")
                 val dataId = generateDataId()
 
-                val productNeedToBeSaved = ProductSaved(dataId, retrievedProduct!!)
-
-                detailViewModel.saveProduct(productNeedToBeSaved)
+                detailViewModel.saveProduct(retrievedProduct!!)
             }
         }
 

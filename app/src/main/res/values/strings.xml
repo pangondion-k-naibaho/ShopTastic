@@ -16,6 +16,7 @@
     <string name="tvDummyEmail">example@mail.com</string>
     <string name="tvDummyAddress">San Antonio, Hunters Creek Dr</string>
     <string name="tvDummyProductDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec faucibus arcu, a fringilla justo.</string>
+    <string name="tvDummyProductCount">3</string>
 
 
     <!--    TextBox-->
@@ -75,5 +76,10 @@
 
     <!--    Menu-->
     <string name="menuCart">Cart</string>
+
+    <string name="tvClickHere">Click here</string>
+    <string name="tvAddMoreItem">to add more this item to cart</string>
+    <string name="cbTxtSelectAll">Select All</string>
+    <string name="tvTotalPriceTitle">Total</string>
 
 </resources>

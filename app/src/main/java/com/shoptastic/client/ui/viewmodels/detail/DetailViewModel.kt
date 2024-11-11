@@ -9,11 +9,13 @@ import com.shoptastic.client.data.model.other.ProductSaved
 import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.data.repository.detail_product.DetailProductRepository
 import com.shoptastic.client.data.repository.products_saved.ProductSavedRepository
+import com.shoptastic.client.data.repository.products_saved.SavedProductRepository
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
     private val detailProductRepository: DetailProductRepository,
-    private val productSavedRepository: ProductSavedRepository
+//    private val productSavedRepository: ProductSavedRepository,
+    private val savedProductRepository: SavedProductRepository
 ): ViewModel() {
     private val TAG = DetailViewModel::class.java.simpleName
 
@@ -45,11 +47,11 @@ class DetailViewModel(
         }
     }
 
-    fun saveProduct(product: ProductSaved) {
+    fun saveProduct(product: ProductResponse) {
         _isLoading.value = true // Menandakan proses loading
         viewModelScope.launch {
             try {
-                productSavedRepository.insertProduct(product)
+                savedProductRepository.insertProduct(product)
                 _isFail.value = false // Berhasil menyimpan produk
                 _isSaveSuccess.value = true
             } catch (e: Exception) {
