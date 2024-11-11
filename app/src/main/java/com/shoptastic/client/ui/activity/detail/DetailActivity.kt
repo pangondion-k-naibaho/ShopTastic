@@ -16,6 +16,7 @@ import com.shoptastic.client.data.Constants
 import com.shoptastic.client.data.model.other.ProductSaved
 import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.databinding.ActivityDetailBinding
+import com.shoptastic.client.ui.activity.cart.CartActivity
 import com.shoptastic.client.ui.custom_components.PopUpNotificationListener
 import com.shoptastic.client.ui.custom_components.showPopUpNotification
 import com.shoptastic.client.ui.viewmodels.detail.DetailViewModel
@@ -147,7 +148,8 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.menuCart ->{
-                Toast.makeText(this@DetailActivity, "Updated soon", Toast.LENGTH_SHORT).show()
+                startActivity(CartActivity.newIntent(this@DetailActivity))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -17,6 +17,7 @@ import com.shoptastic.client.data.repository.products_saved.SavedProductReposito
 import com.shoptastic.client.data.repository.products_saved.SavedProductRepositoryImpl
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepository
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepositoryImpl
+import com.shoptastic.client.ui.viewmodels.cart.CartViewModel
 import com.shoptastic.client.ui.viewmodels.dashboard.DashboardViewModel
 import com.shoptastic.client.ui.viewmodels.detail.DetailViewModel
 import com.shoptastic.client.ui.viewmodels.login.LoginViewModel
@@ -41,6 +42,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { DashboardViewModel(get(), get(), get()) }
     viewModel { DetailViewModel(get(), get()) }
+    viewModel { CartViewModel(get()) }
 }
 
 val databaseModule = module {

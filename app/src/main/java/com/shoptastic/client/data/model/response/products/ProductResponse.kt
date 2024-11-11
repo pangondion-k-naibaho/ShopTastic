@@ -9,7 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity
 data class ProductResponse(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    val localId: Int = 0,
+
     @field:SerializedName("id")
     val id: Int,
 

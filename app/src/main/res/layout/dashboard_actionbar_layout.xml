@@ -9,200 +9,104 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity.detail.DetailActivity">
+        tools:context=".ui.activity.cart.CartActivity">
 
-        <ScrollView
-            android:id="@+id/svContent"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/clContent"
+            android:background="@color/flax_flower_blue"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clContent"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/clAction">
+            app:layout_constraintTop_toBottomOf="@+id/toolbarCart"
+            app:layout_constraintBottom_toTopOf="@+id/clTotalPrice">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivProduct"
-                    android:layout_width="0dp"
-                    android:layout_height="400dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvProductPrice"
-                    android:src="@drawable/sample_product"/>
-
-
-                <TextView
-                    android:id="@+id/tvProductPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivProduct"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/redhatdisplay_bold"
-                    android:textSize="25sp"
-                    android:textColor="@color/flax_flower_blue"
-                    android:text="@string/tvDummyProductPrice"/>
-
-                <TextView
-                    android:id="@+id/tvProductName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/tvProductPrice"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/redhatdisplay_medium"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:text="@string/tvDummyProductName"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/tvProductName"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductName"
-                    android:layout_marginTop="8dp"
-                    android:padding="4dp"
-                    android:background="@drawable/bg_circular_rectangle_white_aplause">
-
-                    <ImageView
-                        android:id="@+id/ivStar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:src="@drawable/ic_star_rate"/>
-
-                    <TextView
-                        android:id="@+id/tvCountRater"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:textColor="@color/flintstone"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/redhatdisplay_light"
-                        android:text="@string/tvDummyProductCountRater"/>
-
-                    <TextView
-                        android:id="@+id/tvProductRating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/ivStar"
-                        app:layout_constraintEnd_toStartOf="@+id/tvCountRater"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginHorizontal="3dp"
-                        android:textColor="@color/void_century"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/redhatdisplay_regular"
-                        android:text="@string/tvDummyProductRating"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/tvCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@+id/clRating"
-                    app:layout_constraintTop_toTopOf="@+id/clRating"
-                    app:layout_constraintBottom_toBottomOf="@+id/clRating"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/redhatdisplay_regular"
-                    android:textSize="13sp"
-                    android:textColor="@color/dwarven_peaches"
-                    android:text="@string/tvDummyProductCategory"/>
-
-                <TextView
-                    android:id="@+id/tvDescriptionTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/clRating"
-                    app:layout_constraintTop_toBottomOf="@+id/clRating"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/redhatdisplay_semibold"
-                    android:textSize="18sp"
-                    android:textColor="@color/void_century"
-                    android:text="@string/tvDetailProductTitle"/>
-
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    app:layout_constraintStart_toEndOf="@+id/tvDescriptionTitle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tvDescriptionTitle"
-                    app:layout_constraintBottom_toBottomOf="@id/tvDescriptionTitle"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@color/flintstone"/>
-
-                <TextView
-                    android:id="@+id/tvProductDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/tvDescriptionTitle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDescriptionTitle"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/redhatdisplay_regular"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:text="@string/tvDummyProductDescription"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </ScrollView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clAction"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/svContent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="8dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAddToCart"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSavedProduct"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnCheckout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_rv_saved_product_layout"
+                android:overScrollMode="never"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTotalPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clContent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="8dp"
+            android:background="@drawable/bg_bottom_circular_rectangle_white_romansilver">
+
+            <CheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="2dp"
-                android:background="@drawable/bg_circular_rectangle_primary_white"
-                android:textColor="@color/flax_flower_blue"
+                android:button="@drawable/bg_custom_checkbox"
+                android:fontFamily="@font/redhatdisplay_medium"
                 android:textSize="16sp"
-                android:fontFamily="@font/redhatdisplay_semibold"
+                android:textColor="@color/black"
                 android:textAllCaps="false"
-                android:text="@string/btnTxtAddToCart"/>
+                android:paddingHorizontal="5dp"
+                android:text="@string/cbTxtSelectAll"/>
+
+            <TextView
+                android:id="@+id/tvTotalPriceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/btnCheckout"
+                app:layout_constraintTop_toTopOf="@+id/btnCheckout"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/redhatdisplay_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:text="@string/tvTotalPriceTitle"/>
+
+            <TextView
+                android:id="@+id/tvTotalPriceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/tvTotalPriceTitle"
+                app:layout_constraintBottom_toBottomOf="@+id/btnCheckout"
+                android:fontFamily="@font/redhatdisplay_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:text="@string/tvDummyProductPrice"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCheckout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toEndOf="@+id/btnAddToCart"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="2dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="8dp"
                 android:background="@drawable/primary_background"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/redhatdisplay_semibold"
                 android:textAllCaps="false"
+                android:fontFamily="@font/redhatdisplay_medium"
+                android:textSize="16sp"
+                android:textColor="@color/white"
                 android:text="@string/btnTxtCheckout"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

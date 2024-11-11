@@ -20,6 +20,7 @@ import com.shoptastic.client.data.model.other.ItemDropdown
 import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.databinding.ActivityDashboardBinding
 import com.shoptastic.client.databinding.DashboardBottomsheetLayoutBinding
+import com.shoptastic.client.ui.activity.cart.CartActivity
 import com.shoptastic.client.ui.activity.detail.DetailActivity
 import com.shoptastic.client.ui.activity.login.LoginActivity
 import com.shoptastic.client.ui.custom_components.InputDropdownView
@@ -194,6 +195,11 @@ class DashboardActivity : AppCompatActivity() {
             }
 
             bottomSheetDialog.show()
+        }
+
+        binding.ivCart.setOnClickListener {
+            startActivity(CartActivity.newIntent(this@DashboardActivity))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 
