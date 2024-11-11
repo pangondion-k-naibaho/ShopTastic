@@ -13,11 +13,13 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.shoptastic.client.R
 import com.shoptastic.client.data.Constants
+import com.shoptastic.client.data.model.other.ProductSaved
 import com.shoptastic.client.data.model.response.products.ProductResponse
 import com.shoptastic.client.databinding.ActivityDetailBinding
 import com.shoptastic.client.ui.custom_components.PopUpNotificationListener
 import com.shoptastic.client.ui.custom_components.showPopUpNotification
 import com.shoptastic.client.ui.viewmodels.detail.DetailViewModel
+import com.shoptastic.client.utils.Extension.Companion.generateDataId
 import com.shoptastic.client.utils.Extension.Companion.toCurrencyString
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -67,6 +69,10 @@ class DetailActivity : AppCompatActivity() {
                 )
             }
         })
+
+        detailViewModel.isSaveSuccess.observe(this@DetailActivity, {
+            if(it) Toast.makeText(this@DetailActivity, getString(R.string.toastSaveToCartSuccess), Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun setUpView(){
@@ -115,6 +121,17 @@ class DetailActivity : AppCompatActivity() {
             }
         })
 
+
+        binding.apply {
+            btnAddToCart.setOnClickListener {
+                Log.d(TAG, "retrieved product: ${retrievedProduct}")
+                val dataId = generateDataId()
+
+                val productNeedToBeSaved = ProductSaved(dataId, retrievedProduct!!)
+
+                detailViewModel.saveProduct(productNeedToBeSaved)
+            }
+        }
 
     }
 

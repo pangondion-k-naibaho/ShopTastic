@@ -43,6 +43,7 @@
 
     <!--    Toast-->
     <string name="toastLoginSuccess">Login Success ! Directing to dashboard…</string>
+    <string name="toastSaveToCartSuccess">Product has been successfully added to the cart.</string>
 
     <!--    Dialog-->
     <string name="dialogTxtLoginFailedTitle">Login Failed !</string>

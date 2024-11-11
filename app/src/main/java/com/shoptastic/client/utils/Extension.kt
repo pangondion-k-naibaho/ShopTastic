@@ -2,6 +2,9 @@ package com.shoptastic.client.utils
 
 import android.content.Context
 import com.shoptastic.client.data.model.other.ItemDropdown
+import java.text.SimpleDateFormat
+import java.util.Date
+import kotlin.random.Random
 
 class Extension {
     companion object{
@@ -25,6 +28,16 @@ class Extension {
 
         fun Double.toCurrencyString(): String {
             return "$ %.2f".format(this)
+        }
+
+        fun generateDataId(): String {
+            val prefix = "shptstc"
+
+            val currentTime = SimpleDateFormat("ddMMyyyyHHmm").format(Date())
+
+            val randomNumber = Random.nextLong(100_000_000L, 999_999_999L)
+
+            return "$prefix-$currentTime-$randomNumber"
         }
 
     }

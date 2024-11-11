@@ -1,5 +1,7 @@
 package com.shoptastic.client.di
 
+import androidx.room.Room
+import com.shoptastic.client.data.local.database.AppDatabase
 import com.shoptastic.client.data.remote.ApiConfig
 import com.shoptastic.client.data.repository.categories.CategoriesRepository
 import com.shoptastic.client.data.repository.categories.CategoriesRepositoryImpl
@@ -9,6 +11,8 @@ import com.shoptastic.client.data.repository.login.LoginRepository
 import com.shoptastic.client.data.repository.login.LoginRepositoryImpl
 import com.shoptastic.client.data.repository.products.ProductsRepository
 import com.shoptastic.client.data.repository.products.ProductsRepositoryImpl
+import com.shoptastic.client.data.repository.products_saved.ProductSavedRepository
+import com.shoptastic.client.data.repository.products_saved.ProductSavedRepositoryImpl
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepository
 import com.shoptastic.client.data.repository.productsbycategories.ProductsByCategoriesRepositoryImpl
 import com.shoptastic.client.ui.viewmodels.dashboard.DashboardViewModel
@@ -27,10 +31,25 @@ val repositoryModule = module {
     single<ProductsRepository> { ProductsRepositoryImpl(get()) }
     single<ProductsByCategoriesRepository> { ProductsByCategoriesRepositoryImpl(get()) }
     single<DetailProductRepository> { DetailProductRepositoryImpl(get()) }
+    single<ProductSavedRepository> { ProductSavedRepositoryImpl(get()) }
 }
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { DashboardViewModel(get(), get(), get()) }
-    viewModel { DetailViewModel(get()) }
+    viewModel { DetailViewModel(get(), get()) }
+}
+
+val databaseModule = module {
+    // Membuat instance database
+    single {
+        Room.databaseBuilder(
+            get(), // `get()` ini untuk mengambil konteks dari Koin
+            AppDatabase::class.java,
+            "app_database" // Nama database Anda
+        ).build()
+    }
+
+    // Menyediakan DAO dari database
+    single { get<AppDatabase>().productSavedDao() }
 }
