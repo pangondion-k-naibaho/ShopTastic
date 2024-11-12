@@ -13,6 +13,7 @@ import com.shoptastic.client.utils.Extension.Companion.toCurrencyString
 class ItemSavedProductAdapter(
     var data: MutableList<ProductSavedWithCount>,
     private val listener: ItemListener,
+    private val onSelectionChanged: (Boolean) -> Unit
 ): RecyclerView.Adapter<ItemSavedProductAdapter.ViewHolder>() {
     interface ItemListener{
         fun onBoxChecked(price: Double)
@@ -20,6 +21,8 @@ class ItemSavedProductAdapter(
         fun onBoxUnchecked(price: Double)
 
         fun onAccessItem(id: Int)
+
+//        fun onItemCheckedStatusChanged()
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -45,17 +48,24 @@ class ItemSavedProductAdapter(
                 listener.onAccessItem(item.savedProduct.id)
             }
 
-            binding.cbProduct.apply{
-                isChecked = item.isChecklisted
+            binding.cbProduct.isChecked = item.isChecklisted
 
-                setOnCheckedChangeListener{_, isChecked ->
-                    if(isChecked){
-                        listener.onBoxChecked(item.savedProduct.price*item.count)
+            binding.cbProduct.apply {
+                item.isChecklisted = isChecked
+
+                setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        listener.onBoxChecked(item.savedProduct.price * item.count)
                         updateItemCheckStatus(item, true)
-                    }else{
-                        listener.onBoxUnchecked(item.savedProduct.price*item.count)
+                    } else {
+                        listener.onBoxUnchecked(item.savedProduct.price * item.count)
                         updateItemCheckStatus(item, false)
                     }
+                    // Panggil listener untuk memberitahukan perubahan
+//                    listener.onItemCheckedStatusChanged()
+
+                    val allChecked = data.all { it.isChecklisted }
+                    onSelectionChanged(allChecked)
                 }
             }
         }
@@ -88,5 +98,14 @@ class ItemSavedProductAdapter(
             }
         }
         notifyDataSetChanged()
+    }
+
+    fun setSelectAll(isChecked: Boolean) {
+        data.forEach { it.isChecklisted = isChecked }
+        notifyDataSetChanged() // Refresh adapter agar tampilan berubah
+    }
+
+    fun areAllItemsChecked(): Boolean {
+        return data.all { it.isChecklisted }
     }
 }

@@ -23,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CartActivity : AppCompatActivity() {
     private val TAG = CartActivity::class.java.simpleName
     private lateinit var binding: ActivityCartBinding
-    private var rvAdapter : ItemSavedProductAdapter?= null
+    private lateinit var rvAdapter : ItemSavedProductAdapter
     private val cartViewModel: CartViewModel by viewModel()
 
     private var _totalPrice = MutableLiveData<Double>(0.0)
@@ -102,7 +102,12 @@ class CartActivity : AppCompatActivity() {
                             )
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                         }
-                    }
+
+//                        override fun onItemCheckedStatusChanged() {
+//                            binding.cbSelectAll.isChecked = rvAdapter?.areAllItemsChecked() == true
+//                        }
+                    },
+                    onSelectionChanged = { allChecked -> binding.cbSelectAll.isChecked = allChecked }
                 )
 
                 val rvLayoutManager = LinearLayoutManager(this@CartActivity)
@@ -116,6 +121,7 @@ class CartActivity : AppCompatActivity() {
         //Bagian penulisan code reaksi CheckBox
         binding.cbSelectAll.apply {
             setOnCheckedChangeListener {_, isChecked ->
+                rvAdapter!!.setSelectAll(isChecked)
                 if(isChecked){
                     rvAdapter!!.checkAllItems(true)
                 }else{

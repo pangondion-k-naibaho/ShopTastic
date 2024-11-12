@@ -8,5 +8,5 @@ import kotlinx.android.parcel.Parcelize
 data class ProductSavedWithCount(
     val savedProduct: ProductResponse,
     val count: Int,
-    val isChecklisted: Boolean = false,
+    var isChecklisted: Boolean = false,
 ):Parcelable
