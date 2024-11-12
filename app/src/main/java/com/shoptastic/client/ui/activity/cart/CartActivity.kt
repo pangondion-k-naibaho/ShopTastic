@@ -157,4 +157,9 @@ class CartActivity : AppCompatActivity() {
             binding.pbLoading.visibility = View.GONE
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        cartViewModel.getSavedProducts()
+    }
 }
