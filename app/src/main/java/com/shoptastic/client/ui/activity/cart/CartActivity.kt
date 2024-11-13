@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shoptastic.client.R
+import com.shoptastic.client.data.model.other.ProductSavedWithCount
 import com.shoptastic.client.databinding.ActivityCartBinding
 import com.shoptastic.client.ui.activity.detail.DetailActivity
 import com.shoptastic.client.ui.custom_components.PopUpNotificationListener
@@ -28,6 +30,8 @@ class CartActivity : AppCompatActivity() {
 
     private var _totalPrice = MutableLiveData<Double>(0.0)
     private var totalPrice: LiveData<Double> = _totalPrice
+
+    private var listProductNeedToCheckedOut = arrayListOf<ProductSavedWithCount>()
 
     companion object{
         fun newIntent(context: Context): Intent = Intent(context, CartActivity::class.java)
@@ -88,12 +92,16 @@ class CartActivity : AppCompatActivity() {
                 rvAdapter = ItemSavedProductAdapter(
                     response.toProductSavedWithCount().toMutableList(),
                     object: ItemSavedProductAdapter.ItemListener{
-                        override fun onBoxChecked(price: Double) {
+                        override fun onBoxChecked(item: ProductSavedWithCount, price: Double) {
                             _totalPrice.value = _totalPrice.value!! + price
+                            listProductNeedToCheckedOut.add(item)
+                            Log.d(TAG, "list : $listProductNeedToCheckedOut")
                         }
 
-                        override fun onBoxUnchecked(price: Double) {
+                        override fun onBoxUnchecked(item: ProductSavedWithCount, price: Double) {
                             _totalPrice.value = _totalPrice.value!! - price
+                            listProductNeedToCheckedOut.remove(item)
+                            Log.d(TAG, "list : $listProductNeedToCheckedOut")
                         }
 
                         override fun onAccessItem(id: Int) {
@@ -128,6 +136,10 @@ class CartActivity : AppCompatActivity() {
                     rvAdapter!!.checkAllItems(false)
                 }
             }
+        }
+
+        binding.btnCheckout.setOnClickListener {
+            Toast.makeText(this@CartActivity, "Implemented soon", Toast.LENGTH_SHORT).show()
         }
 
     }

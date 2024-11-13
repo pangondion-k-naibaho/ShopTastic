@@ -16,9 +16,9 @@ class ItemSavedProductAdapter(
     private val onSelectionChanged: (Boolean) -> Unit
 ): RecyclerView.Adapter<ItemSavedProductAdapter.ViewHolder>() {
     interface ItemListener{
-        fun onBoxChecked(price: Double)
+        fun onBoxChecked(item: ProductSavedWithCount, price: Double)
 
-        fun onBoxUnchecked(price: Double)
+        fun onBoxUnchecked(item: ProductSavedWithCount, price: Double)
 
         fun onAccessItem(id: Int)
 
@@ -55,10 +55,10 @@ class ItemSavedProductAdapter(
 
                 setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
-                        listener.onBoxChecked(item.savedProduct.price * item.count)
+                        listener.onBoxChecked(item, item.savedProduct.price * item.count)
                         updateItemCheckStatus(item, true)
                     } else {
-                        listener.onBoxUnchecked(item.savedProduct.price * item.count)
+                        listener.onBoxUnchecked(item, item.savedProduct.price * item.count)
                         updateItemCheckStatus(item, false)
                     }
                     // Panggil listener untuk memberitahukan perubahan

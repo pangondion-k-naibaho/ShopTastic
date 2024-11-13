@@ -130,6 +130,10 @@ class DetailActivity : AppCompatActivity() {
 
                 detailViewModel.saveProduct(retrievedProduct!!)
             }
+
+            btnPurchase.setOnClickListener {
+                Toast.makeText(this@DetailActivity, "Implemented soon", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
